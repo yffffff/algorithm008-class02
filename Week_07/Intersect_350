@@ -1,0 +1,22 @@
+class Intersect_350 {
+    public int[] intersect(int[] nums1, int[] nums2) {
+        int lenth_1 = nums1.length;
+        int lenth_2 = nums2.length;
+        Arrays.sort(nums1);
+        Arrays.sort(nums2);
+        int[] res = new int[Math.min(lenth_1, lenth_2)];
+        int idx1 = 0;
+        int idx2 = 0;
+        int result = 0;
+        while (idx1 < lenth_1 && idx2 < lenth_2){
+            while (idx2 < lenth_2 && idx1 < lenth_1 && nums1[idx1] < nums2[idx2]) idx1++;
+            while (idx1 < lenth_1 && idx2 < lenth_2 && nums1[idx1] > nums2[idx2]) idx2++;
+            if (idx1 < lenth_1 && idx2 < lenth_2 && nums1[idx1] == nums2[idx2]){
+                res[result++] = nums1[idx1];
+                idx1++;
+                idx2++;
+            }
+        }
+        return Arrays.copyOfRange(res, 0, result);
+    }
+}
