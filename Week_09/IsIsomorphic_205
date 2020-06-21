@@ -1,0 +1,21 @@
+class IsIsomorphic_205 {
+    public boolean isIsomorphic(String s, String t) {
+        int len = s.length();
+        int[] s_array = new int[128];
+        int[] t_array = new int[128];
+        for (int i = 0 ; i < len ; i++){
+            char sc = s.charAt(i);
+            char st = t.charAt(i);
+            if (s_array[sc] != t_array[st]){
+                return false;
+            }else{
+                if (s_array[sc] == 0){
+                    s_array[sc] = i + 1;
+                    t_array[st] = i + 1;
+                }
+            }
+
+        }
+        return true;
+    }
+}
